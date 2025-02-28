@@ -10,6 +10,11 @@
 
 <body>
 
+    <audio id="background-music" autoplay loop>
+        <source src="img/Blue Dream - Cheel.mp3" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ audio.
+    </audio>
+
     <div class="container">
         <div class="my-love">
             <img src="img/my-love.png" alt="">
@@ -23,6 +28,9 @@
         </div>
         <div class="text-overlay">
             <h1 id="rainbow-text">Dưới cơn mưa đêm, chỉ cần có em bên cạnh, thế giới trở nên thật ấm áp 🥰💕❤️😘</h1>
+        </div>
+        <div class="trees">
+            <img src="img/tree.png" alt="">
         </div>
         <div class="cloud"></div>
         <div class="cloud"></div>
@@ -50,6 +58,48 @@
     </div>
 
     <script src="index.js"></script>
+
+    <script>
+        document.body.addEventListener("click", function () {
+            const backgroundMusic = document.getElementById("background-music");
+            const rainSound = document.getElementById("rain-sound");
+
+            if (backgroundMusic.paused) {
+                backgroundMusic.play();
+            }
+            if (rainSound.paused) {
+                rainSound.play();
+            }
+        });
+    </script>
+
+    <script>
+        function moveMyLove() {
+            let myLove = document.querySelector(".my-love");
+            let position = 0;
+            let speed = 0.5;
+
+            function walk() {
+                if (position < window.innerWidth) {
+                    position += speed;
+                    myLove.style.transform = `translateX(${position}px)`;
+                    requestAnimationFrame(walk);
+                } else {
+                    position = -200;
+                    requestAnimationFrame(walk);
+                }
+            }
+
+            walk();
+        }
+
+        document.addEventListener("DOMContentLoaded", moveMyLove);
+    </script>
+
+    <audio id="rain-sound" autoplay loop>
+        <source src="img/tiengmuaroi.mp3" type="audio/ogg">
+        Trình duyệt của bạn không hỗ trợ audio.
+    </audio>
 </body>
 
 </html>

@@ -55,6 +55,7 @@ body {
     width: 2px;
     height: 12px;
     opacity: 0.8;
+    z-index: 10000;
     transform-origin: bottom;
     animation: animate 1.5s linear infinite;
 }
@@ -84,7 +85,20 @@ body {
 .container .my-love {
     position: absolute;
     margin-top: 150px;
+    left: 0;
+    z-index: 10;
+    animation: walk 60s linear infinite;
 }
+
+@keyframes walk {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100vw);
+    }
+}
+
 .container .my-love img {
     width: 400px;
 }
@@ -129,3 +143,23 @@ body {
     0% { background-position: 0% 50%; }
     100% { background-position: 100% 50%; }
 }
+
+.container .trees {
+    position: absolute;
+    margin-left: -2700px; 
+    margin-top: -430px;
+    z-index: -5;
+}
+
+.trees img {
+    width: 700px;
+    height: 900px;
+}
+
+.container .house{
+    position: absolute;
+    margin-top: 200px;
+    margin-right: -3000px;
+}
+
+

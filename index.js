@@ -3,7 +3,7 @@ function createClouds() {
     let clouds = document.querySelectorAll('.cloud');
 
     clouds.forEach(cloud => {
-        let numberOfDrops = 20; 
+        let numberOfDrops = 30; 
         for (let i = 0; i < numberOfDrops; i++) {
             let drop = document.createElement('div');
             drop.classList.add('drop');
@@ -18,8 +18,23 @@ function createClouds() {
 
             cloud.appendChild(drop);
         }
+        createLightningEffect(cloud);
     });
 }
+
+function createLightningEffect(cloud) {
+    setInterval(() => {
+        cloud.style.transition = "box-shadow 0.1s ease, opacity 0.1s ease";
+        cloud.style.boxShadow = "0 0 100px 40px rgba(255, 255, 255, 0.8)";
+        cloud.style.opacity = "1";
+
+        setTimeout(() => {
+            cloud.style.boxShadow = "none";
+            cloud.style.opacity = "0.9";
+        }, 100);
+    }, 3000); 
+}
+
 function animateRainbowText() {
     let text = document.getElementById("rainbow-text");
     let colors = ["red", "orange", "yellow", "green", "cyan", "blue", "violet"];
@@ -30,5 +45,6 @@ function animateRainbowText() {
         index = (index + 1) % colors.length;
     }, 500);
 }
+
 animateRainbowText();
 createClouds();
